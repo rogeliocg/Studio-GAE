@@ -2,7 +2,7 @@ package pruebagae.adquem.com.pruebagae;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -19,15 +19,23 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class MainActivity extends FragmentActivity {
 
-public class MainActivity extends ActionBarActivity {
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        context = getApplicationContext();
+
+        metodoDeError();
 
         new GcmRegistrationAsyncTask(this).execute();
+    }
+
+    private void metodoDeError(){
+        Toast.makeText(context, "Prueba de Jenkins y Tuleap", Toast.LENGTH_SHORT).show();
     }
 
     @Override
